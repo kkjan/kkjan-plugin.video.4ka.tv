@@ -1,0 +1,200 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: en\n"
+
+msgctxt "#30001"
+msgid "username"
+msgstr "Username"
+
+msgctxt "#30002"
+msgid "password"
+msgstr "Password"
+
+
+msgctxt "#30601"
+msgid "User name or password is not defined"
+msgstr "User name or password is not defined"
+
+msgctxt "#30602"
+msgid "User name or password is not valid"
+msgstr "User name or password is not valid"
+
+msgctxt "#30603"
+msgid "Too many active devices"
+msgstr "Too many active devices"
+
+msgctxt "#30604"
+msgid "Internet connection error"
+msgstr "Internet connection error"
+
+msgctxt "#30605"
+msgid "Pairing error"
+msgstr "Pairing error"
+
+msgctxt "#30701"
+msgid "Setting was successfully applied."
+msgstr "Setting was successfully applied."
+
+msgctxt "#30702"
+msgid "Playlist and EPG XML successfully updated"
+msgstr "Playlist and EPG xml successfully updated"
+
+msgctxt "#30703"
+msgid "Channels and EPG updating started"
+msgstr "Channels and EPG updating started"
+
+msgctxt "#30030"
+msgid "device_type_code"
+msgstr "Device type code"
+
+msgctxt "#30031"
+msgid "device_model"
+msgstr "Device model"
+
+msgctxt "#30032"
+msgid "device_name"
+msgstr "Device name"
+
+msgctxt "#30033"
+msgid "device_serial_number"
+msgstr "Device serial number"
+
+msgctxt "#30034"
+msgid "device_token"
+msgstr "Device token"
+
+msgctxt "#30035"
+msgid "generate_playlist"
+msgstr "Generate playlist"
+
+msgctxt "#30036"
+msgid "playlistpath"
+msgstr "Playlist directory"
+
+msgctxt "#30037"
+msgid "playlistfile"
+msgstr "Playlist directory"
+
+msgctxt "#30038"
+msgid "generate_epg"
+msgstr "Generate EPG XML"
+
+msgctxt "#30039"
+msgid "epgdays.past"
+msgstr "Days to past for EPG XML"
+
+msgctxt "#30040"
+msgid "epgdays.future"
+msgstr "Days to future for EPG XML"
+
+msgctxt "#30041"
+msgid "epgpath"
+msgstr "EPG XML Directory"
+
+msgctxt "#30042"
+msgid "epgfile"
+msgstr "EPG XML file"
+
+msgctxt "#30043"
+msgid "lang"
+msgstr "Language for EPG and playlist"
+
+msgctxt "#30050"
+msgid "update_interval"
+msgstr "Update interal (hours)"
+
+msgctxt "#30051"
+msgid "update_now"
+msgstr "Update now"
+
+
+msgctxt "#30052"
+msgid "IPTVMinstall"
+msgstr "Install IPTV Manager add-on"
+
+msgctxt "#30053"
+msgid "IPTVMenable"
+msgstr "Enable IPTV Manager integration""
+
+msgctxt "#30054"
+msgid "IPTVMsettings"
+msgstr "IPTV Manager settings…"
+
+msgctxt "#30055"
+msgid "IPTVSimplerestart"
+msgstr "restart IPTV Simple after channel/EPG update"
+
+msgctxt "#30056"
+msgid "IPTVSimplesettings"
+msgstr "IPTV Simple settings"
+
+msgctxt "#30060"
+msgid "live_tv"
+msgstr "Live stream TV"
+
+msgctxt "#30061"
+msgid "live_radio"
+msgstr "Live stream radio"
+
+msgctxt "#30062"
+msgid "archive"
+msgstr "4KA TV achive"
+
+msgctxt "#30063"
+msgid "search"
+msgstr "Search"
+
+msgctxt "#30064"
+msgid "usr_pwd_empty"
+msgstr "You need to set a name and password for 4KA TV in the plugin settings. It is also possible to set an existing device token. If not set, the plugin will try to pair with 4KA TV"
+
+msgctxt "#30065"
+msgid "tokenempty"
+msgstr "Device token missing"
+
+msgctxt "#30066"
+msgid "next:"
+msgstr "next:"
+
+msgctxt "#30067"
+msgid "4KA TV: Updating Channels and EPG"
+msgstr "4KA TV: Updating Channels and EPG"
+
+msgctxt "#30068"
+msgid "Download data from 4KA TV"
+msgstr "Download data from 4KA TV"
+
+msgctxt "#30069"
+msgid "Generate playlist"
+msgstr "Generate playlist"
+
+msgctxt "#30070"
+msgid "Generate EPG"
+msgstr "Generate EPG"
+
+msgctxt "#30071"
+msgid "Update IPTV simple"
+msgstr "Update IPTV simple"
+
+msgctxt "#30072"
+msgid "Finished"
+msgstr "Finished"
+
+
+msgctxt "#32001"
+msgid "Main"
+msgstr "Hlavné"
+
+msgctxt "#32002"
+msgid "Playlist and EPG"
+msgstr "Playlist a EPG"
+
+msgctxt "#32003"
+msgid "Update options"
+msgstr "Update"
+
+msgctxt "#32004"
+msgid "Integration"
+msgstr "Integration"
+

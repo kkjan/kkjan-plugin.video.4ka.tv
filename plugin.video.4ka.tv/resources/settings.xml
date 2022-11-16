@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings version="1">
+    <section id="plugin.video.4ka.tv">
+        <category id="general" label="32001">
+            <group id="1">
+                <setting label="30001" id="username" type="string">
+                    <default />
+                    <level>0</level>
+                    <constraints>
+                        <allowempty>true</allowempty>
+                    </constraints>
+                    <control type="edit" format="string">
+                        <heading>30001</heading>
+                    </control>
+                </setting>
+
+                <setting label="30002" id="password" type="string">
+                    <default />
+                    <level>0</level>
+                    <constraints>
+                        <allowempty>true</allowempty>
+                    </constraints>
+                    <control type="edit" format="string">
+                        <heading>30002</heading>
+                        <hidden>true</hidden>
+                    </control>
+                </setting>
+            </group>
+
+            <group id="2">
+                <setting label="30030" id="device_type_code" type="string">
+                    <default>ANDROID_4_4PLUS</default>
+                    <level>0</level>
+                    <constraints>
+                        <allowempty>true</allowempty>
+                    </constraints>
+                    <control type="edit" format="string">
+                        <heading>30030</heading>
+                    </control>
+                </setting>
+
+                <setting label="30031" id="device_model" type="string">
+                    <default>Huawei</default>
+                    <level>0</level>
+                    <constraints>
+                        <allowempty>true</allowempty>
+                    </constraints>
+                    <control type="edit" format="string">
+                        <heading>30031</heading>
+                    </control>
+                </setting>
+
+                <setting label="30032" id="device_name" type="string">
+                    <default>HUAWEI SCL-L21</default>
+                    <level>0</level>
+                    <constraints>
+                        <allowempty>true</allowempty>
+                    </constraints>
+                    <control type="edit" format="string">
+                        <heading>30032</heading>
+                    </control>
+                </setting>
+
+                <setting label="30033" id="device_serial_number" type="string">
+                    <default>"-------------"</default>
+                    <level>0</level>
+                    <constraints>
+                        <allowempty>true</allowempty>
+                    </constraints>
+                    <control type="edit" format="string">
+                        <heading>30033</heading>
+                    </control>
+                </setting>
+                <setting label="30034" id="device_token" type="string">
+                    <default />
+                    <level>0</level>
+                    <constraints>
+                        <allowempty>true</allowempty>
+                    </constraints>
+                    <control type="edit" format="string">
+                        <heading>30034</heading>
+                    </control>
+                </setting>
+            </group>
+        </category>
+
+        <category id="epg_playlist" label="32002">
+
+            <group id="playlist">
+                <setting label="30035" id="generate_playlist" type="boolean">
+                    <default>false</default>
+                    <level>0</level>
+                    <control type="toggle">
+                        <heading>30035</heading>
+                    </control>
+                </setting>
+
+                <setting label="30036" id="playlistpath" type="path">
+                    <default />
+                    <level>0</level>
+                    <dependencies>
+                        <dependency type="enable" setting="generate_playlist">true</dependency>
+                    </dependencies>
+                    <constraints>
+                        <allowempty>true</allowempty>
+                    </constraints>
+                    <control type="button" format="path">
+                        <heading>30036</heading>
+                    </control>
+                </setting>
+                <setting label="30037" id="playlistfile" type="string">
+                    <default>swan_playlist.m3u</default>
+                    <level>0</level>
+                    <dependencies>
+                        <dependency type="enable" setting="generate_playlist">true</dependency>
+                    </dependencies>
+                    <control type="edit" format="string">
+                        <heading>30037</heading>
+                    </control>
+                </setting>
+            </group>
+
+
+            <group id="epg">
+
+                <setting label="30038" id="generate_epg" type="boolean">
+                    <default>false</default>
+                    <level>0</level>
+                    <control type="toggle">
+                        <heading>30038</heading>
+                    </control>
+                </setting>
+
+                <setting label="30039" id="epgdays.past" type="integer">
+                    <control type="edit" format="integer"></control>
+                    <default>1</default>
+                    <level>0</level>
+                    <dependencies>
+                        <dependency type="enable" setting="generate_epg">true</dependency>
+                    </dependencies>
+                    <control type="edit" format="integer">
+                        <heading>30039</heading>
+                    </control>
+                </setting>
+
+                <setting label="30040" id="epgdays.future" type="integer">
+                    <control type="edit" format="integer"></control>
+                    <default>3</default>
+                    <level>0</level>
+                    <dependencies>
+                        <dependency type="enable" setting="generate_epg">true</dependency>
+                    </dependencies>
+                    <control type="edit" format="integer">
+                        <heading>30040</heading>
+                    </control>
+                </setting>
+
+                <setting label="30041" id="epgpath" type="path">
+                    <default />
+                    <level>0</level>
+                    <constraints>
+                        <allowempty>true</allowempty>
+                    </constraints>
+                    <dependencies>
+                        <dependency type="enable" setting="generate_epg">true</dependency>
+                    </dependencies>
+                    <control type="button" format="path">
+                        <heading>30041</heading>
+                    </control>
+                </setting>
+
+                <setting label="30042" id="epgfile" type="string">
+                    <default>epginfo.xml</default>
+                    <level>0</level>
+                    <dependencies>
+                        <dependency type="enable" setting="generate_epg">true</dependency>
+                    </dependencies>
+                    <control type="edit" format="string">
+                        <heading>30042</heading>
+                    </control>
+                </setting>
+
+            </group>
+
+            <group id="lang">
+                <setting label="30043" id="epg_lang" type="string">
+                    <default>slk</default>
+                    <level>0</level>
+                    <constraints>
+                        <options>
+                            <option label="SK">slk</option>
+                            <option label="ENG">eng</option>
+                        </options>
+                    </constraints>
+                    <control type="list" format="string">
+                        <heading>30043</heading>
+                    </control>
+                </setting>
+                <setting label="next update" id="next_update" type="string">
+                    <control type="edit" format="string" />
+                    <default />
+                    <level>0</level>
+                    <visible>false</visible>
+                    <constraints>
+                        <allowempty>true</allowempty>
+                    </constraints>
+                </setting>
+            </group>
+        </category>
+        <category id="update_options" label="32003">
+            <group id="update_options_grp">
+                <setting id="update_interval" type="string" label="30050" help="">
+                    <level>0</level>
+                    <default>12</default>
+                    <constraints>
+                        <options>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>6</option>
+                            <option>12</option>
+                            <option>24</option>
+                        </options>
+                    </constraints>
+                    <control type="list" format="string">
+                    </control>
+                </setting>
+
+                <setting label="30051" id="update_now" type="action">
+                    <level>0</level>
+                    <dependencies>
+                        <dependency type="visible" on="property" name="infobool">System.HasAddon(service.iptv.manager)</dependency>
+                    </dependencies>
+                    <data>RunScript(plugin.video.4ka.tv,refresh)</data>
+                    <control type="button" format="action">
+                        <close>true</close>
+                    </control>
+                </setting>
+            </group>
+
+        </category>
+        <category id="iptv_man_integration" label="32004">
+            <group id="iptv_man_integ">
+                <setting label="30052" id="install_IPTVman" type="action">
+                    <level>0</level>
+                    <visible></visible>
+                    <dependencies>
+                        <dependency type="visible" on="property" name="infobool" operator="!is">System.HasAddon(service.iptv.manager)</dependency>
+                    </dependencies>
+                    <data>InstallAddon(service.iptv.manager)</data>
+                    <control type="button" format="action">
+                        <close>true</close>
+                    </control>
+                </setting>
+
+
+                <setting label="30053" type="boolean" id="iptv.enabled">
+                    <default>true</default>
+                    <dependencies>
+                        <dependency type="visible" on="property" name="infobool">System.HasAddon(service.iptv.manager)</dependency>
+                    </dependencies>
+                    <control type="toggle" />
+                </setting>
+
+                <setting label="30054" id="iptv_man_settings" type="action" parent="iptv.enabled">
+                    <level>0</level>
+                    <dependencies>
+                        <dependency type="visible" on="property" name="infobool">System.HasAddon(service.iptv.manager)</dependency>
+                    </dependencies>
+                    <data>Addon.OpenSettings(service.iptv.manager)</data>
+                    <control type="button" format="action">
+                        <close>true</close>
+                    </control>
+                </setting>
+
+                <setting id="iptv.channels_uri" type="string">
+                    <level>0</level>
+                    <visible>false</visible>
+                    <default>plugin://plugin.video.4ka.tv/iptvmanager/channels</default>
+                    <control type="edit" format="string" />
+                </setting>
+
+                <setting id="iptv.epg_uri" type="string">
+                    <level>0</level>
+                    <visible>false</visible>
+                    <default>plugin://plugin.video.4ka.tv/iptvmanager/epg</default>
+                    <control type="edit" format="string" />
+                </setting>
+
+            </group>
+            <group id="iptv_simple_integ">
+
+                <setting label="30055" type="boolean" id="iptv_simple_restart">
+                    <default>true</default>
+                    <dependencies>
+                        <dependency type="visible" on="property" name="infobool">System.HasAddon(pvr.iptvsimple)</dependency>
+                    </dependencies>
+                    <control type="toggle" />
+                </setting>
+
+                <setting label="30056" id="iptv_simple_settings" type="action">
+                    <level>0</level>
+                    <dependencies>
+                        <dependency type="visible" on="property" name="infobool">System.HasAddon(pvr.iptvsimple)</dependency>
+                    </dependencies>
+                    <data>Addon.OpenSettings(pvr.iptvsimple)</data>
+                    <control type="button" format="action">
+                        <close>true</close>
+                    </control>
+                </setting>
+            </group>
+        </category>
+    </section>
+
+</settings>

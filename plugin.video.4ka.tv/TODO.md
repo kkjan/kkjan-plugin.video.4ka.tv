@@ -1,0 +1,2 @@
+- Implement archive in Video plugin
+- Implement long description in generated EPG XMLTV file

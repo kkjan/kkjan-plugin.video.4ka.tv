@@ -1,0 +1,198 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: sk\n"
+
+msgctxt "#30001"
+msgid "username"
+msgstr "Login"
+
+msgctxt "#30002"
+msgid "password"
+msgstr "Heslo"
+
+msgctxt "#30601"
+msgid "User name or password is not defined"
+msgstr "Login alebo heslo nie je nastavené"
+
+msgctxt "#30602"
+msgid "User name or password is not valid"
+msgstr "Login alebo heslo nie je platné"
+
+msgctxt "#30603"
+msgid "Too many active devices"
+msgstr "Prihlásených príliš veľa zariadení"
+
+msgctxt "#30604"
+msgid "Internet connection error"
+msgstr "Internetové spojenie nie je dostupné"
+
+msgctxt "#30605"
+msgid "Pairing error"
+msgstr "Chyba párovania zariadenia"
+
+
+msgctxt "#30701"
+msgid "Setting successfully applied."
+msgstr "Nastavenia boli úspešne aplikované."
+
+msgctxt "#30702"
+msgid "Channels and EPG XML successfully updated"
+msgstr "Kanály ls a EPG XML boli úspešne aktualizované."
+
+msgctxt "#30703"
+msgid "Channels and EPG updating started"
+msgstr "Začala aktualizácia kanálov a EPG"
+
+msgctxt "#30030"
+msgid "device_type_code"
+msgstr "Kód typu zariadenia"
+
+msgctxt "#30031"
+msgid "device_model"
+msgstr "Model zariadenia"
+
+msgctxt "#30032"
+msgid "device_name"
+msgstr "Názov zariadenia"
+
+msgctxt "#30033"
+msgid "device_serial_number"
+msgstr "Sériové číslo zariadenia"
+
+msgctxt "#30034"
+msgid "device_token"
+msgstr "Token  zariadenia"
+
+msgctxt "#30035"
+msgid "generate_playlist"
+msgstr "Generovať playlist"
+
+msgctxt "#30036"
+msgid "playlistpath"
+msgstr "Adresár súboru playlistu"
+
+msgctxt "#30037"
+msgid "playlistfile"
+msgstr "Názov súboru playlistu"
+
+msgctxt "#30038"
+msgid "generate_epg"
+msgstr "Generovať EPG xml súbor"
+
+msgctxt "#30039"
+msgid "epgdays.past"
+msgstr "Minulé dni pre generovanie EPG xml súboru"
+
+msgctxt "#30040"
+msgid "epgdays.future"
+msgstr "Budúce dní pre generovanie EPG xml súboru"
+
+msgctxt "#30041"
+msgid "epgpath"
+msgstr "Adresár súboru EPG XML súboru"
+
+msgctxt "#30042"
+msgid "epgfile"
+msgstr "Názov súboru EPG XML"
+
+msgctxt "#30043"
+msgid "lang"
+msgstr "Jazyk pre EPG a playlist"
+
+msgctxt "#30050"
+msgid "update_interval"
+msgstr "Interval aktualizácie"
+
+msgctxt "#30051"
+msgid "update_now"
+msgstr "Aktualizovať teraz"
+
+msgctxt "#30052"
+msgid "IPTVMinstall"
+msgstr "Inštalácia IPTV manažéra"
+
+msgctxt "#30053"
+msgid "IPTVMenable"
+msgstr "Povolnie integrácie IPTV manažéra"
+
+msgctxt "#30054"
+msgid "IPTVMsettings"
+msgstr "Nastavenie IPTV manažéra…"
+
+msgctxt "#30055"
+msgid "IPTVSimplerestart"
+msgstr "Reštartovanie IPTV Simple po aktualizácií kanálov a EPG"
+
+msgctxt "#30056"
+msgid "IPTVSimplesettings"
+msgstr "Nastavenie IPTV Simple"
+
+msgctxt "#30060"
+msgid "live_tv"
+msgstr "Živé vysielanie TV"
+
+msgctxt "#30061"
+msgid "live_radio"
+msgstr "Živé vysielanie rádiá"
+
+msgctxt "#30062"
+msgid "archive"
+msgstr "Archív"
+
+msgctxt "#30063"
+msgid "search"
+msgstr "Hladať"
+
+msgctxt "#30064"
+msgid "usr_pwd_empty"
+msgstr "Treba nastaviť meno a heslo pre 4KA TV v nastaveniach pluginu. Taktiež je možné nastaviť už existujúci token zariadenia. Ak sa nenastaví, plugin sa pokúsi spárovať so službou 4KA TV"
+
+msgctxt "#30065"
+msgid "tokenempty"
+msgstr "Device token nie je nastavený"
+
+msgctxt "#30066"
+msgid "next:"
+msgstr "Nasleduje:"
+
+
+msgctxt "#30067"
+msgid "4KA TV: Updating Channels and EPG"
+msgstr "4KA TV: Aktualizácia kanálov a EPG"
+
+msgctxt "#30068"
+msgid "Download data from 4KA TV"
+msgstr "Sťahovanie dát"
+
+msgctxt "#30069"
+msgid "Generate playlist"
+msgstr "Generovanie playlistu"
+
+msgctxt "#30070"
+msgid "Generate EPG"
+msgstr "Generovanie EPG"
+
+msgctxt "#30071"
+msgid "Update IPTV simple"
+msgstr "Aktualizácia IPTV simple"
+
+msgctxt "#30072"
+msgid "Finished"
+msgstr "Koniec aktualziácie kanálov a EPG"
+
+msgctxt "#32001"
+msgid "Main"
+msgstr "Hlavné"
+
+msgctxt "#32002"
+msgid "Playlist and EPG"
+msgstr "Playlist a EPG"
+
+msgctxt "#32003"
+msgid "Update options"
+msgstr "Aktualizácia"
+
+msgctxt "#32004"
+msgid "Integration"
+msgstr "Integrácia"
