@@ -5,12 +5,12 @@ import xbmcgui
 import xbmcplugin
 import xbmcaddon
 import xbmcvfs
-from urllib.parse import urlparse
-from urllib.parse import parse_qsl
+from urlparse import urlparse
+from urlparse import parse_qsl
 from uuid import getnode as get_mac
-import resources.lib.cls4katv as C_4KATV
-import resources.lib.logger as logger
-from resources.lib.functions import *
+import  resources.lib.cls4katv as C_4KATV
+import  resources.lib.logger as logger
+from  resources.lib.functions import *
 import routing
 
 
@@ -38,7 +38,7 @@ _device_model_ = _addon.getSetting("device_model")
 _device_name_ = _addon.getSetting("device_name")
 _device_serial_number_ = _addon.getSetting("device_serial_number")
 _epg_lang_ = _addon.getSetting("epg_lang")
-_datapath_ = xbmcvfs.translatePath( _addon.getAddonInfo('profile'))
+_datapath_ = xbmc.translatePath( _addon.getAddonInfo('profile'))
 
 if not _username_ or not _password_:
     not_usr_pwd_notice = xbmcgui.Dialog()
@@ -259,7 +259,7 @@ def play4katv(id,start,end):
 @router.route('/iptvmanager/channels')
 def iptvmanager_channels():
     """Return JSON-STREAMS formatted data for all live channels"""
-    from resources.lib.iptvmanager import IPTVManager
+    from  resources.lib.iptvmanager import IPTVManager
     port = int(router.args.get('port')[0])
     IPTVManager(port).send_channels()
 
@@ -267,7 +267,7 @@ def iptvmanager_channels():
 @router.route('/iptvmanager/epg')
 def iptvmanager_epg():
     """Return JSON-EPG formatted data for all live channel EPG data"""
-    from resources.lib.iptvmanager import IPTVManager
+    from  resources.lib.iptvmanager import IPTVManager
     port = int(router.args.get('port')[0])
     IPTVManager(port).send_epg()
 

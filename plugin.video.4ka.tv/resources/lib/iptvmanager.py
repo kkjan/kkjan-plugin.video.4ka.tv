@@ -23,7 +23,7 @@ class IPTVManager:
         self.device_model = self._addon.getSetting("device_model")
         self.device_name = self._addon.getSetting("device_name")
         self.device_serial_number = self._addon.getSetting("device_serial_number")
-        self.datapath = xbmcvfs.translatePath(self._addon.getAddonInfo('profile')) 
+        self.datapath = xbmc.translatePath(self._addon.getAddonInfo('profile')) 
         self.epg_lang = self._addon.getSetting("epg_lang")
         self._4katv=C_4KATV.C_4KATV(self.username, self.password,self.device_token,self.device_type_code,self.device_model,self.device_name,self.device_serial_number,self.datapath,self.epg_lang)
         iptvsimpleaddon = xbmcaddon.Addon('pvr.iptvsimple')

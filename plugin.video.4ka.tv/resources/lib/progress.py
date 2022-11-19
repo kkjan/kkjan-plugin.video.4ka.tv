@@ -17,7 +17,7 @@ class progressdialogBG:
         self.heading=heading
         self.pDialog=xbmcgui.DialogProgressBG()
         self.pDialog.create(heading,message)
-        logDbg("progress dialog crated")
+        logDbg("progress dialog created")
 
     def setpercentrange(self,frompercent,topercent):
         self.frompercent=frompercent

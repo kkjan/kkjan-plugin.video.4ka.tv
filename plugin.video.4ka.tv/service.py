@@ -34,6 +34,7 @@ class cls4katvMonitor(xbmc.Monitor):
     def update(self):
         
         result =-1
+        pDialog=None
         try:
             log('Update started')
             _generate_playlist = 'true' == self._addon.getSetting("generate_playlist")
@@ -55,34 +56,33 @@ class cls4katvMonitor(xbmc.Monitor):
                 _epghourssfuture_=24
             _epgpath_ = os.path.join(self._addon.getSetting("epgpath"),self._addon.getSetting("epgfile"))
             _playlistpath_ = os.path.join(self._addon.getSetting("playlistpath"),self._addon.getSetting("playlistfile"))
-            _datapath_ = xbmcvfs.translatePath(self._addon.getAddonInfo('profile')) 
+            _datapath_ = xbmc.translatePath(self._addon.getAddonInfo('profile')) 
             _epg_lang_ = self._addon.getSetting("epg_lang")
-            pDialog=None
             _4katv_=C_4KATV.C_4KATV(username=_username_, password=_password_,device_token=_device_token_,device_type_code=_device_type_code_,model=_device_model_,name=_device_name_,serial_number=_device_serial_number_,datapath=_datapath_,epg_lang=_epg_lang_)
             
             if _4katv_.logdevicestartup() ==True:
                 pDialog = progressdialogBG.progressdialogBG(self._addon.getLocalizedString(30067),self._addon.getLocalizedString(30068))
-                if pDialog:
+                if pDialog is not None:
                     _4katv_.progress = pDialog
                     pDialog.setpercentrange(0,15)
                 #_4katv_.save_4katv_jsons(hourspast=_epghourspast_,hoursfuture=_epghourssfuture_)
                 if _generate_playlist:
-                    if pDialog:
+                    if pDialog is not None:
                         pDialog.setpercentrange(15,40)
                         pDialog.setpozition(0,message=self._addon.getLocalizedString(30069))
                     _4katv_.generateplaylist(playlistpath=_playlistpath_)
                 if _generate_epg:
-                    if pDialog:
+                    if pDialog is not None:
                         pDialog.setpercentrange(40,70)
                         pDialog.setpozition(0,message=self._addon.getLocalizedString(30070))
                     _4katv_.generateepg(epgpath=_epgpath_,hourspast=_epghourspast_,hoursfuture=_epghourssfuture_)
                 if self._iptv_simple_restart_ and(_generate_epg or _generate_playlist):
-                    if pDialog:
+                    if pDialog is not None:
                         pDialog.setpercentrange(70,100)
                         pDialog.setpozition(0,message=self._addon.getLocalizedString(30071))
                     self._iptvsimple.iptv_simple_restart() 
                 result=1
-                if pDialog:
+                if pDialog is not None:
                     pDialog.setpozition(100, message=self._addon.getLocalizedString(30072))
                     pDialog.close()
 
@@ -118,7 +118,7 @@ class cls4katvMonitor(xbmc.Monitor):
             logErr(self._addon.getLocalizedString(e.id))
             notify(self._addon.getLocalizedString(e.id), True)
         finally:
-            if pDialog:
+            if pDialog is not None:
                 pDialog.close()
 
         log('Update ended')

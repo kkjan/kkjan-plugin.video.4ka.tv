@@ -32,7 +32,8 @@ def refresh():
     #xbmc.executebuiltin( "ActivateWindow(busydialognocancel)" )
     log('Update started-from settings')
     #with busy_dialog():
-       # update()
+    _addon = xbmcaddon.Addon('plugin.video.4ka.tv')
+    _addon.openSettings()
     #xbmc.executebuiltin( "Dialog.Close(busydialognocancel)" )
     log('Update ended-from settings')
     ADDON.openSettings()
