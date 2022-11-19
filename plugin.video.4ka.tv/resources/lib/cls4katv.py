@@ -74,9 +74,12 @@ class C_4KATV:
     def logdevicestartup(self):
         headers = _COMMON_HEADERS
         headers["Content-Type"] = "application/json;charset=utf-8"
-        data = {'device_token' : self.device_token,
-                'application': "3.1.12",
-                'firmware': "22" }
+        data = {
+            "application": "3.3.9",
+            "device_token": self.device_token,
+            "device_type_code": "ANDROID_4_4PLUS",
+            "firmware": "31"
+        }
         req = requests.post('https://backoffice.swan.4net.tv/api/device/logDeviceStart', json=data,headers=headers)
         j=req.json()
         return j['success']
