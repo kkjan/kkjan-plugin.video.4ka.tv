@@ -131,7 +131,8 @@ class cls4katvMonitor(xbmc.Monitor):
             try:
                 logger.logDbg("Update started onSettingsChanged")
                 self._updt_interval=int(self._addon.getSetting('update_interval'))
-
+                
+    
                 res = self.update()
                 if res == 1:
                     notify(self._addon.getLocalizedString(30701),False)
