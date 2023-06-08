@@ -1,2 +1,2 @@
-- Implement archive in Video plugin
+- implement recording on Android (ffmpeg problem)
 - Implement long description in generated EPG XMLTV file

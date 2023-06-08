@@ -6,7 +6,7 @@ import socket
 import xbmcvfs
 import xbmcaddon
 import xbmc
-import resources.lib.cls4katv as C_4KATV
+import resources.lib.cls4katv_v2 as C_4KATV
 import resources.lib.logger as logger
 
 class IPTVManager:
@@ -25,7 +25,6 @@ class IPTVManager:
         self.device_serial_number = self._addon.getSetting("device_serial_number")
         self.datapath = xbmcvfs.translatePath(self._addon.getAddonInfo('profile')) 
         self.epg_lang = self._addon.getSetting("epg_lang")
-        self._4katv=C_4KATV.C_4KATV(self.username, self.password,self.device_token,self.device_type_code,self.device_model,self.device_name,self.device_serial_number,self.datapath,self.epg_lang)
         iptvsimpleaddon = xbmcaddon.Addon('pvr.iptvsimple')
         iptvsimpleaddon.getSetting('musiclibrary.artistsfolder')
 
@@ -50,8 +49,8 @@ class IPTVManager:
         def send(self):
             """Decorator to send over a socket"""
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.connect(('127.0.0.1', self.port))
-
+            sock.connect(('127.0.0.1', self.port))  
+            self._4katv=C_4KATV.C_4KATV(self.username, self.password,self.device_token,self.device_type_code,self.device_model,self.device_name,self.device_serial_number,self.datapath,self.epg_lang)          
             try:
                 sock.sendall(json.dumps(func(self)).encode())
             finally:
@@ -62,10 +61,11 @@ class IPTVManager:
     @via_socket
     def send_channels(self):
         """Return JSON-STREAMS formatted python datastructure to IPTV Manager"""
-        channels=self._4katv.get_iptvm_channels()
-        return dict(version=1, streams=channels)
+        logger.logDbg('send channel iptvmanager')
+        return dict(version=1, streams=self._4katv.get_iptvm_channels())
 
     @via_socket
     def send_epg(self):
         """Return JSON-EPG formatted python data structure to IPTV Manager"""
+        logger.logDbg('send epg iptvmanager')
         return dict(version=1, epg=self._4katv.get_iptvm_epg(self.epgdayspast,self.epgdaysfuture))

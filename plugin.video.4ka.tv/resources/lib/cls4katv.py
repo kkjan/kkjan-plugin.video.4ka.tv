@@ -135,6 +135,7 @@ class C_4KATV:
                  'end':end}
         req = requests.get('https://backoffice.swan.4net.tv/contentd/api/device/getContent',data, headers=headers)
         j = req.json()
+        logDbg("Json stream: "+json.dumps(j))
         return j['stream_uri']
 
 
@@ -145,6 +146,7 @@ class C_4KATV:
         epg=self.dl_4KATV_epg_json(hourspast=6,hoursfuture=6)
         now=time.time()
 
+        """
         with open(os.path.join(self.datapath,'epg-live-channel.json'), 'w') as json_file:
                 json.dump(epg, json_file)
                 json_file.close()
@@ -152,7 +154,7 @@ class C_4KATV:
         with open(os.path.join(self.datapath,'live-channel.json'), 'w') as json_file:
                 json.dump(j, json_file)
                 json_file.close()
-
+        """
 
         #datetimeformat=xbmc.getRegion('dateshort')+" "+xbmc.getRegion('time')
         datetimeformat=xbmc.getRegion('dateshort')+" "+"%H:%M"
@@ -177,7 +179,8 @@ class C_4KATV:
                     'duration' : datetime.datetime.fromtimestamp(int(ch_ids_curr[0]['endTimestamp'])-int(ch_ids_curr[0]['startTimestamp'])).strftime(datetimeformat) if ch_ids_curr else " ",
                     'tvg-logo' : "https://epg.swan.4net.tv/files/channel_logos/"+str(channel['id'])+".png",
                     'content_source' :  channel['content_sources'][0]['stream_profile_urls']['adaptive'],
-                    'type' :  channel['type']}
+                    'type' :  channel['type'],
+                    'broadcast_id': ch_ids_curr[0]['id'] if ch_ids_curr else " "}
                 plot=''
                 if ch_ids_curr and  'episode_name' in ch_ids_curr[0]:
                     plot+=ch_ids_curr[0]['episode_name']+'[CR]'
@@ -311,7 +314,7 @@ class C_4KATV:
             datetimeformat=xbmc.getRegion('dateshort')+" "+xbmc.getRegion('time')
             for br in dat:
                 ch_id=list(filter(lambda x:x["id_epg"]==br['epg_id'],broad_ch_epg))
-                isSeries=768 in br['tag_ids'] #768-id forSeries tag
+                isSeries=768 in br['tag_ids'] #768-id for Series tag
                 sc ={ 'name' : br['name']+" - "+ch_id[0]['name']+": "+datetime.datetime.fromtimestamp(int(br['startTimestamp'])).strftime(datetimeformat)+" - "+ str(datetime.timedelta(seconds=(int(br['endTimestamp'])-int(br['startTimestamp'])))),
                         'ch_id' : ch_id[0]['id'],
                         'br_id':br['id'],
@@ -340,10 +343,21 @@ class C_4KATV:
                     sc['series']=1
                 else:
                     sc['series']=0
+                
+                sc['broadcast_id']=br['id']
                 subcats.append(sc)
         return subcats  
 
-
+    def get_broadcast_detail_info(self,broadcast_id):
+        info_js=self.dl_4KATV_broadcast_detail_json(broadcast_id)
+        info={
+            'title':info_js['broadcast']['name'] if info_js['broadcast']['name'] is not "Null" else None,
+            'plot':info_js['broadcast']['description_broadcast'] if info_js['broadcast']['description_broadcast'] is not "Null" else None,
+            'cast':info_js['broadcast']['actors'] if info_js['broadcast']['actors'] is not "Null" else None,
+            'year':info_js['broadcast']['year'] if info_js['broadcast']['year'] is not "Null" else None,
+            'year':info_js['broadcast']['year'] if info_js['broadcast']['year'] is not "Null" else None,
+        }
+        return info
 
     def generateplaylist(self, playlistpath):
         if self.progress:
@@ -571,6 +585,45 @@ class C_4KATV:
 
         return j
 
+    def dl_4KATV_broadcast_detail_json(self,broadcast_id):
+    
+        bec = self.dl_4KATV_allchannelgroups()
+        epg_ids=[]
+        for broad_ch_epgs in bec["channel_groups"]:
+            broad_ch_epg=broad_ch_epgs['channels']
+            for ch in broad_ch_epg:
+                epg_ids.append(ch["id_epg"])
+        #epg_ids=epg_ids[:-1]
+        lng=[]
+        lng.append(self.lang)
+        headers = _COMMON_HEADERS
+        headers["Content-Type"] = "application/json;charset=utf-8"
+        data={
+            "hours_back":168,
+            "hours_front":169,
+            "id_broadcast":broadcast_id,
+            "ids_epg":epg_ids,
+            "lng_priority":lng
+             }
+
+        try:
+            req_det_broadcast = requests.post('https://epg.swan.4net.tv/v2/detail', json=data, headers=headers,timeout=(5,120))
+        except requests.exceptions.Timeout:
+            logDbg("Download error TIMEOUT: "+req_det_broadcast.url)
+        except requests.exceptions.TooManyRedirects:
+            logDbg("Download error TOMANY REDIRECTS : "+req_det_broadcast.url)
+        except requests.exceptions.RequestException as e:
+            logDbg("Download error: "+req_det_broadcast.url)
+        
+        j = req_det_broadcast.json()
+        
+        with open(os.path.join(self.datapath,'broadcast-det-RESP.json'), 'w') as json_file:
+            json.dump(j, json_file)
+            json_file.close()
+        
+        return j
+       
+
     def save_4KATV_jsons(self,hourspast=1,hoursfuture=1):
         j=self.dl_4KATV_channels()
         with open(os.path.join(self.datapath,'sources-channel.json'), 'w') as json_file:
@@ -655,7 +708,8 @@ class C_4KATV:
             description=description,
             genre=genre,
             image=image,
-            date=date)          
+            date=date,
+            broadcast_id=prg['id'])          
             )
         return epg
             

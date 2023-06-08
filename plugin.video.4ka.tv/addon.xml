@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="plugin.video.4ka.tv" name="4KA TV" version="0.1.5~alpha5" provider-name="janschml">
+<addon id="plugin.video.4ka.tv" name="4KA TV" version="0.1.7~alpha9" provider-name="janschml">
   <requires>
     <import addon="xbmc.python" version="3.0.0" />
     <import addon="script.module.requests" version="2.18.4" />
     <import addon="script.module.dateutil" version="2.8.1" />
     <import addon="script.module.routing" version="0.2.3" />
     <import addon="script.common.plugin.cache" version="2.6.3"/>
-    <import addon="script.module.web-pdb" version="1.5.6"/>
   </requires>
   <extension point="xbmc.python.pluginsource" library="main.py">
     <provides>video</provides>
@@ -19,6 +18,8 @@
     <description lang="sk">Plugin na generovanie playlistu a EPG XML súboru pre IPTV Simple client pre službu 4KA TV</description>
     <description lang="cz">Plugin pro generování playlistu a EPG XML súboru pro IPTV Simple client pro službu 4KA TV</description>
     <platform>all</platform>
+    <news>v0.1.7~alpha9 (2023-03-02)
+      - Added download from archive and live stream possibility</news>
     <news>v0.1.5~alpha5 (2022-11-20)
       -renname plugin, new name  4KA TV
       - Added IPTV Manager support

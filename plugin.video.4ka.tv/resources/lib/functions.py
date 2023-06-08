@@ -1,14 +1,16 @@
 import sys
 import os
-import resources.lib.cls4katv as cls4katv
+import resources.lib.cls4katv_v2 as cls4katv
 from resources.lib.logger import *
 import xbmc
 import xbmcaddon
 import xbmcvfs
+import xbmcgui
+import stat
 from contextlib import contextmanager
 
 ADDON = xbmcaddon.Addon()
-
+ADDON = xbmcaddon.Addon('plugin.video.4ka.tv')
 
 @contextmanager
 def busy_dialog():
@@ -37,8 +39,41 @@ def refresh():
     log('Update ended-from settings')
     ADDON.openSettings()
 
+def android_get_current_appid():
+    with open("/proc/%d/cmdline" % os.getpid()) as fp:
+        return fp.read().rstrip("\0")
 
+def ffmpeg_location():
+    ffmpeg_src = xbmcvfs.translatePath(ADDON.getSettingString('ffmpeg_path'))
 
+    if xbmc.getCondVisibility('system.platform.android'):
+        ffmpeg_dst = '/data/data/%s/ffmpeg' % android_get_current_appid()
 
+        if (ADDON.getSettingString('ffmpeg_path') != ADDON.getSettingString('ffmpeg_path_last')) or (not xbmcvfs.exists(ffmpeg_dst) and ffmpeg_src != ffmpeg_dst):
+            xbmcvfs.copy(ffmpeg_src, ffmpeg_dst)
+            ADDON.setSettingString('ffmpeg_path_last',ADDON.getSettingString('ffmpeg_path'))
 
+        ffmpeg = ffmpeg_dst
+    else:
+        ffmpeg = ffmpeg_src
 
+    if ffmpeg:
+        try:
+            st = os.stat(ffmpeg)
+            if not (st.st_mode & stat.S_IXUSR):
+                try:
+                    os.chmod(ffmpeg, st.st_mode | stat.S_IXUSR)
+                except:
+                    pass
+        except:
+            pass
+    if xbmcvfs.exists(ffmpeg):
+        return ffmpeg
+    else:
+        xbmcgui.Dialog().notification("IPTV Recorder", "ffmpeg exe not found!")
+
+def sanitize_filename(str):
+    _quote = {'"': '', '|': '', '*': '', '/': '_', '<': '', ':': '-', '\\': ' ', '?': '', '>': ''}
+    for char in _quote:
+        str = str.replace(char, _quote[char])
+    return str

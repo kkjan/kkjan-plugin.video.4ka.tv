@@ -30,7 +30,7 @@
             <group id="2">
                 <setting label="30030" id="device_type_code" type="string">
                     <default>ANDROID_4_4PLUS</default>
-                    <level>0</level>
+                    <level>3</level>
                     <constraints>
                         <allowempty>true</allowempty>
                     </constraints>
@@ -41,7 +41,7 @@
 
                 <setting label="30031" id="device_model" type="string">
                     <default>Huawei</default>
-                    <level>0</level>
+                    <level>3</level>
                     <constraints>
                         <allowempty>true</allowempty>
                     </constraints>
@@ -52,7 +52,7 @@
 
                 <setting label="30032" id="device_name" type="string">
                     <default>HUAWEI SCL-L21</default>
-                    <level>0</level>
+                    <level>3</level>
                     <constraints>
                         <allowempty>true</allowempty>
                     </constraints>
@@ -63,7 +63,7 @@
 
                 <setting label="30033" id="device_serial_number" type="string">
                     <default>"-------------"</default>
-                    <level>0</level>
+                    <level>3</level>
                     <constraints>
                         <allowempty>true</allowempty>
                     </constraints>
@@ -73,7 +73,7 @@
                 </setting>
                 <setting label="30034" id="device_token" type="string">
                     <default />
-                    <level>0</level>
+                    <level>3</level>
                     <constraints>
                         <allowempty>true</allowempty>
                     </constraints>
@@ -229,9 +229,6 @@
 
                 <setting label="30051" id="update_now" type="action">
                     <level>0</level>
-                    <dependencies>
-                        <dependency type="visible" on="property" name="infobool">System.HasAddon(service.iptv.manager)</dependency>
-                    </dependencies>
                     <data>RunScript(plugin.video.4ka.tv,refresh)</data>
                     <control type="button" format="action">
                         <close>true</close>
@@ -239,6 +236,65 @@
                 </setting>
             </group>
 
+        </category>
+        <category id="recording" label="32005">
+            <group id="recording_settings">
+                <setting label="30057" id="save_path" type="path">
+                    <default />
+                    <level>0</level>
+                    <constraints>
+                        <allowempty>true</allowempty>
+                    </constraints>
+                    <control type="button" format="path">
+                        <heading>30057</heading>
+                    </control>
+                </setting>
+
+
+                <setting label="30058" id="ffmpeg_path" type="path">
+                    <default />
+                    <level>0</level>
+                    <constraints>
+                        <writable>false</writable>
+                        <allowempty>true</allowempty>
+                    </constraints>
+                    <control type="button" format="file">
+                        <heading>30058</heading>
+                    </control>
+                </setting>
+
+                <setting label="30059" id="fname_ext" type="string">
+                    <level>0</level>
+                    <default>mp4</default>
+                    <constraints>
+                        <allowempty>true</allowempty>
+                    </constraints>
+                    <control type="edit" format="string">
+                        <heading>30059</heading>
+                    </control>
+                </setting>
+
+                <setting label="30060" id="ffmpeg_additional_settings" type="string">
+                    <level>0</level>
+                    <default/>
+                    <constraints>
+                        <allowempty>true</allowempty>
+                    </constraints>
+                    <control type="edit" format="string">
+                        <heading>30060</heading>
+                    </control>
+                </setting>
+
+                <setting id="ffmpeg_path_last" type="string">
+                    <level>0</level>
+                    <visible>false</visible>
+                    <default/>
+                    <constraints>
+                        <allowempty>true</allowempty>
+                    </constraints>
+                    <control type="edit" format="string" />
+                </setting>
+            </group>
         </category>
         <category id="iptv_man_integration" label="32004">
             <group id="iptv_man_integ">
@@ -256,6 +312,7 @@
 
 
                 <setting label="30053" type="boolean" id="iptv.enabled">
+                    <level>0</level>
                     <default>true</default>
                     <dependencies>
                         <dependency type="visible" on="property" name="infobool">System.HasAddon(service.iptv.manager)</dependency>
@@ -292,6 +349,7 @@
             <group id="iptv_simple_integ">
 
                 <setting label="30055" type="boolean" id="iptv_simple_restart">
+                    <level>0</level>
                     <default>true</default>
                     <dependencies>
                         <dependency type="visible" on="property" name="infobool">System.HasAddon(pvr.iptvsimple)</dependency>
