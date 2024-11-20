@@ -6,11 +6,14 @@ import subprocess
 import xbmc
 from urllib.parse import quote, quote_plus, unquote
 import xbmcaddon
+import time
+import os
 
 import_path = xbmcvfs.translatePath("special://home/addons/plugin.video.4ka.tv")
 sys.path.insert(1, import_path)  
 from resources.lib.logger import *
-                
+from resources.lib.functions import find_files
+
 _addon = xbmcaddon.Addon('plugin.video.4ka.tv')
 
 duration=sys.argv[1]
@@ -38,7 +41,28 @@ logDbg(stderr)
 xbmcvfs.copy(temp,save_path)
 xbmcvfs.delete(temp)
 '''
-f=save_path+fname+f_ext
+msg=(_addon.getLocalizedString(30083)).format(fname)
+xbmc.executebuiltin('Notification({},{})'.format(_addon.getLocalizedString(30082),msg))
+
+'''
+while True:
+    dirs,files=xbmcvfs.listdir(save_path)
+    if any(f.endswith(".pid") for f in files):
+        logDbg("Some recording is in progress. Wait for the finish...")
+        time.sleep(120)
+    else:
+        break
+'''
+while True:
+    _save_path=_addon.getSetting('save_path') #ROOT Save dir
+    files=find_files(_save_path,['.pid'])
+    if any(f.endswith(".pid") for f in files):
+        logDbg("Some recording is in progress. Wait for the finish...")
+        time.sleep(120)
+    else:
+        break
+
+f=os.path.join(save_path,fname+f_ext)
 #,'-bsf:a','aac_adtstoasc',
 cmd=[ffmpeg_path,'-loglevel','debug','-y','-i',url,'-acodec','copy','-vcodec','copy','-reconnect_at_eof', '1', '-reconnect_streamed', '1', '-reconnect_delay_max', '300', '-nostdin']
 if ffmpeg_additional_settings:
@@ -46,8 +70,7 @@ if ffmpeg_additional_settings:
 cmd.append(f)
 logDbg("Recording start: "+fname)
 logDbg("The commandline is %s"%(' '.join(cmd)))
-msg=(_addon.getLocalizedString(30083))%(fname)
-xbmc.executebuiltin('Notification(%s,%s)'% (_addon.getLocalizedString(30082),msg))
+
 flogbase=fname
 
 if debug:
@@ -59,7 +82,7 @@ if debug:
     cmdf.write(' '.join(cmd))
     cmdf.close()
 
-pidf=save_path+fname+".pid"
+pidf=os.path.join(save_path,fname+".pid")
 
 p=subprocess.Popen(cmd, stdout=stdout,stderr=stderr,shell=False)
 pid=xbmcvfs.File(pidf,'w')
@@ -102,6 +125,6 @@ if debug:
 
 
 logDbg("Recording finished: "+fname)
-msg=(_addon.getLocalizedString(30084))%(fname)
-xbmc.executebuiltin('Notification(%s,%s)'% (_addon.getLocalizedString(30082),msg))
+msg=(_addon.getLocalizedString(30084)).format(fname)
+xbmc.executebuiltin('Notification({},{})'.format(_addon.getLocalizedString(30082),msg))
 xbmcvfs.delete(pidf)

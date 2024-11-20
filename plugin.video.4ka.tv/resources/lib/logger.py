@@ -18,4 +18,7 @@ def logDbg(msg):
 
 def logErr(msg):
     log(msg,level=xbmc.LOGERROR)
+
+def logWarn(msg):
+    log(msg,level=xbmc.LOGWARNING)
 ###############################################################################

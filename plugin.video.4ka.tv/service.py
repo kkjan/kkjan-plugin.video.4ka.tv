@@ -3,10 +3,12 @@ import time
 import requests
 import resources.lib.cls4katv_v2 as C_4KATV
 from resources.lib.iptvsimplehelper import IPTVSimpleHelper
-import resources.lib.progress as progressdialogBG
+import resources.lib.progressdialog as progressdialogBG
 import resources.lib.logger as logger
 import xbmc
 import xbmcaddon
+import subprocess
+
 from resources.lib.functions import *
 
 
@@ -15,6 +17,7 @@ class cls4katvMonitor(xbmc.Monitor):
     _addon = None
     _next_update = 0
     _scriptname = None
+    _iptv_manager_enabled=False
 
     def __init__(self):
         xbmc.Monitor.__init__(self)
@@ -25,7 +28,8 @@ class cls4katvMonitor(xbmc.Monitor):
         logger.logDbg("Get settings next_update: "+self._next_update.strftime("%m/%d/%Y, %H:%M:%S"))
         self._updt_interval=int(self._addon.getSetting('update_interval'))
         self._iptv_simple_restart_ = 'true' == self._addon.getSetting("iptv_simple_restart")
-
+        self._iptv_manager_enabled=self._addon.getSettingBool('iptv.enabled')
+        self._save_path=self._addon.getSetting('save_path')
 
 
     def __del__(self):
@@ -48,6 +52,7 @@ class cls4katvMonitor(xbmc.Monitor):
             _device_name_ = self._addon.getSetting("device_name")
             _device_serial_number_ = self._addon.getSetting("device_serial_number")
             _epghourspast_ = 24* int(self._addon.getSetting("epgdays.past"))
+            
       
             if _epghourspast_<24:
                 _epghourspast_=24
@@ -69,21 +74,21 @@ class cls4katvMonitor(xbmc.Monitor):
                 if _generate_playlist:
                     if pDialog is not None:
                         pDialog.setpercentrange(15,40)
-                        pDialog.setpozition(0,message=self._addon.getLocalizedString(30069))
+                        pDialog.setposition(0,message=self._addon.getLocalizedString(30069))
                     _4katv_.generateplaylist(playlistpath=_playlistpath_)
                 if _generate_epg:
                     if pDialog is not None:
                         pDialog.setpercentrange(40,70)
-                        pDialog.setpozition(0,message=self._addon.getLocalizedString(30070))
+                        pDialog.setposition(0,message=self._addon.getLocalizedString(30070))
                     _4katv_.generateepg(epgpath=_epgpath_,hourspast=_epghourspast_,hoursfuture=_epghourssfuture_)
                 if self._iptv_simple_restart_ and(_generate_epg or _generate_playlist):
                     if pDialog is not None:
                         pDialog.setpercentrange(70,100)
-                        pDialog.setpozition(0,message=self._addon.getLocalizedString(30071))
+                        pDialog.setposition(0,message=self._addon.getLocalizedString(30071))
                     IPTVSimpleHelper.iptv_simple_restart() 
                 result=1
                 if pDialog is not None:
-                    pDialog.setpozition(100, message=self._addon.getLocalizedString(30072))
+                    pDialog.setposition(100, message=self._addon.getLocalizedString(30072))
                     pDialog.close()
 
             else:
@@ -149,6 +154,7 @@ class cls4katvMonitor(xbmc.Monitor):
         logger.log('Next update %s' % dt)
         self._next_update = dt
 
+
    
 
     def tick(self):
@@ -179,12 +185,31 @@ class cls4katvMonitor(xbmc.Monitor):
         self._addon.setSetting('next_update', str(time.mktime(self._next_update.timetuple())))
         logger.log('Saving next update %s' % self._next_update)
 
+    def killrunningrecordings(self):
+        files =find_files(self._save_path,['.pid'])
+        for f in files:
+           
+            pidf=xbmcvfs.File(f,'r')
+            pid=pidf.read()
+            pidf.close()
+            logDbg("Service kill PID: "+pid)
+            if xbmc.getCondVisibility("system.platform.windows"):
+                subprocess.Popen(["taskkill", "/im", pid], shell=True)
+            else:
+                subprocess.Popen(['kill','-9',pid])
+            logDbg("Service delete PID: "+f)
+            xbmcvfs.delete(f)
+
 
 if __name__ == '__main__':
     monitor = cls4katvMonitor()
     
-    while not monitor.abortRequested():
-        if monitor.waitForAbort(10):
-            monitor.save()
-            break
-        monitor.tick()
+    #delay start for 50 second
+    if not monitor.waitForAbort(50) or not monitor._iptv_manager_enabled:
+        logger.logDbg("Start service; iptv.enabled: %d" % monitor._iptv_manager_enabled)
+        while not monitor.abortRequested():
+            if monitor.waitForAbort(10):
+                monitor.save()
+                monitor.killrunningrecordings()
+                break
+            monitor.tick()

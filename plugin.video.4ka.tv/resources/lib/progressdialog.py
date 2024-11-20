@@ -41,7 +41,7 @@ class progressdialogBG:
     def setmessage(self,message):
         self.message=message
 
-    def setpozition(self,value,heading='',message=''):
+    def setposition(self,value,heading='',message=''):
         scal=self.scale()
         
         self.currpos=int(scal*value+self.frompercent)

@@ -243,11 +243,11 @@ msgid "Recording"
 msgstr ""
 
 msgctxt "#30083"
-msgid "Recording %s started"
+msgid "Recording {} started"
 msgstr ""
 
 msgctxt "#30084"
-msgid "Recording %s finished"
+msgid "Recording {} finished"
 msgstr ""
 
 msgctxt "#30085"
@@ -260,6 +260,95 @@ msgstr ""
 
 msgctxt "#30087"
 msgid "Really cancel record?"
+msgstr ""
+
+msgctxt "#30088"
+msgid "Show all tags"
+msgstr ""
+
+msgctxt "#30089"
+msgid "File size"
+msgstr ""
+
+msgctxt "#30090"
+msgid "All records"
+msgstr ""
+
+msgctxt "#30091"
+msgid "Directories"
+msgstr ""
+
+msgctxt "#30092"
+msgid "Maintenance"
+msgstr ""
+
+msgctxt "#30093"
+msgid "Utility"
+msgstr ""
+
+msgctxt "#30094"
+msgid "Import another records"
+msgstr ""
+
+msgctxt "#30095´"
+msgid "Remove download debug file(s)/Orphaned json file(s)"
+msgstr ""
+
+msgctxt "#30096´"
+msgid "Really remove selected file(s)"
+msgstr ""
+
+
+msgctxt "#30097´"
+msgid "Move/copy selected file(s) to library"
+msgstr ""
+
+msgctxt "#30098´"
+msgid "Import selected file(s)"
+msgstr ""
+
+msgctxt "#30099´"
+msgid "Select destination parent directory"
+msgstr ""
+
+msgctxt "#30100´"
+msgid "Select file(s)"
+msgstr ""
+
+msgctxt "#30101´"
+msgid "Override file(s)"
+msgstr ""
+
+msgctxt "#30102´"
+msgid "Import record {} of {}"
+msgstr ""
+
+msgctxt "#30103´"
+msgid "Change destination parent directory""
+msgstr ""
+
+msgctxt "#30104´"
+msgid "Change for all"
+msgstr ""
+
+msgctxt "#30105´"
+msgid "Delete source file(s)"
+msgstr ""
+
+msgctxt "#30106´"
+msgid "Choose a source recorder"
+msgstr ""
+
+msgctxt "#30107´"
+msgid "Records are importing"
+msgstr ""
+
+msgctxt "#30108´"
+msgid "Export to library"
+msgstr ""
+
+msgctxt "#30109´"
+msgid "Browse EPG"
 msgstr ""
 
 msgctxt "#32001"
@@ -280,4 +369,8 @@ msgstr ""
 
 msgctxt "#32005"
 msgid "Recording"
+msgstr ""
+
+msgctxt "#32006"
+msgid "Another settings"
 msgstr ""

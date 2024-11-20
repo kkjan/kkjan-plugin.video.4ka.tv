@@ -237,7 +237,7 @@ msgstr "Naozaj zmazat soubor?"
 
 msgctxt "#30080"
 msgid "Problem with deleting the file"
-msgstr "Problém s vymazaním súboru"
+msgstr "Problém s vymazaním souboru"
 
 
 msgctxt "#30081"
@@ -249,12 +249,12 @@ msgid "Recording"
 msgstr "Nahrávání"
 
 msgctxt "#30083"
-msgid "Recording %s started"
-msgstr "Nahrávání %s začalo"
+msgid "Recording {} started"
+msgstr "Nahrávání {} začalo"
 
 msgctxt "#30084"
-msgid "Recording %s finished"
-msgstr "Nahrávání %s skončilo"
+msgid "Recording {} finished"
+msgstr "Nahrávání {} skončilo"
 
 msgctxt "#30085"
 msgid "Cancel recording"
@@ -267,6 +267,95 @@ msgstr "Zrušení nahrávání"
 msgctxt "#30087"
 msgid "Really cancel record?"
 msgstr "Naozaj zrušit nahrávání?"
+
+msgctxt "#30088"
+msgid "Show all tags"
+msgstr "Zobrazit všechny značky"
+
+msgctxt "#30089"
+msgid "File size"
+msgstr "Velikost souboru"
+
+msgctxt "#30090"
+msgid "All records"
+msgstr "Všechny nahrávky"
+
+msgctxt "#30091"
+msgid "Directories"
+msgstr "Záložky"
+
+msgctxt "#30092"
+msgid "Maintenance"
+msgstr "Údržba"
+
+msgctxt "#30093"
+msgid "Utility"
+msgstr "Nástroje"
+
+msgctxt "#30094"
+msgid "Import another records"
+msgstr "Import iných nahrávok"
+
+msgctxt "#30095´"
+msgid "Remove download debug file(s)/Orphaned json file(s)"
+msgstr "Odstránit debug soubory zo stahování/Osamotcné JSON soubory"
+
+msgctxt "#30096´"
+msgid "Really remove selected file(s)"
+msgstr "Naozaj odstránit vybrané soubory"
+
+
+msgctxt "#30097´"
+msgid "Move/copy selected file(s) to library"
+msgstr "Presunút/kopírovat soubor(y) do knižnice"
+
+msgctxt "#30098´"
+msgid "Import selected file(s)"
+msgstr "Importovat soubor(y)"
+
+msgctxt "#30099´"
+msgid "Select destination parent directory"
+msgstr "Vyberte cílový  rodičovský adresár"
+
+msgctxt "#30100´"
+msgid "Select file(s)"
+msgstr "Vyberte soubor(y)"
+
+msgctxt "#30101´"
+msgid "Override file(s)"
+msgstr "Prepísat soubor(y)"
+
+msgctxt "#30102´"
+msgid "Import record {} of {}"
+msgstr "Importuje sa {} nahrávka z {}"
+
+msgctxt "#30103´"
+msgid "Change destination parent directory""
+msgstr "Zmeniť cílový rodičovský adresár"
+
+msgctxt "#30104´"
+msgid "Change for all"
+msgstr "Zmenit pro všechny"
+
+msgctxt "#30105´"
+msgid "Delete source file(s)"
+msgstr "Zmazat zdrojové soubor(y)"
+
+msgctxt "#30106´"
+msgid "Choose a source recorder"
+msgstr "Vyberte zdrojový addon nahrávok"
+
+msgctxt "#30107´"
+msgid "Records are importing"
+msgstr "Importujú sa nahrávky"
+
+msgctxt "#30108´"
+msgid "Export to library"
+msgstr "Exportovat do kniznice"
+
+msgctxt "#30109´"
+msgid "Browse EPG"
+msgstr "Prehladávat EPG"
 
 msgctxt "#32001"
 msgid "Main"
@@ -288,61 +377,6 @@ msgctxt "#32005"
 msgid "Recording"
 msgstr "Nahrávání"
 
-#~ msgctxt "#30035"
-#~ msgid "generate_playlist"
-#~ msgstr "Generovat playlist"
-
-#~ msgctxt "#30036"
-#~ msgid "playlitpath"
-#~ msgstr "Adresár souboru playlistu"
-
-#~ msgctxt "#30038"
-#~ msgid "generate_epg"
-#~ msgstr "Generovat EPG xml soubor"
-
-#~ msgctxt "#30039"
-#~ msgid "epgdays.past"
-#~ msgstr "Minulé dni pro generovaní EPG xml souboru"
-
-#~ msgctxt "#30040"
-#~ msgid "epgdays.future"
-#~ msgstr "Budúce dni pro generovaní EPG xml souboru"
-
-#~ msgctxt "#30042"
-#~ msgid "epgfile"
-#~ msgstr "Názov EPG souboru"
-
-#~ msgctxt "#30043"
-#~ msgid "lang"
-#~ msgstr "Jazyk pro EPG a playlist"
-
-#~ msgctxt "#30052"
-#~ msgid "IPTVMinstall"
-#~ msgstr "Instalace IPTV manažéra"
-
-#~ msgctxt "#30053"
-#~ msgid "IPTVMenable"
-#~ msgstr "Povolení integrácie IPTV manažéra"
-
-#~ msgctxt "#30055"
-#~ msgid "IPTVSimplerestart"
-#~ msgstr "Reštartovaní IPTV Simple po aktualizaci kanálov a EPG"
-
-#~ msgctxt "#30061"
-#~ msgid "live_tv"
-#~ msgstr "Živé vysílání -TV"
-
-#~ msgctxt "#30062"
-#~ msgid "live_radio"
-#~ msgstr "Živé vysílání -Rádiá"
-
-#~ msgctxt "#30065"
-#~ msgid "usr_pwd_empty"
-#~ msgstr ""
-#~ "Treba nastaviť meno a heslo pro 4KA TV v nastaveních pluginu. Taktéž je "
-#~ "možné nastavit už existujúci token zařízení. Ak se nenastaví, plugin se "
-#~ "pokúsí spárovať se službou 4KA TV "
-
-#~ msgctxt "#30066"
-#~ msgid "tokenempty"
-#~ msgstr "Device token není nastaven"
+msgctxt "#32006"
+msgid "Other settings"
+msgstr "Another nastavení"

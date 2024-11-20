@@ -229,7 +229,7 @@
 
                 <setting label="30051" id="update_now" type="action">
                     <level>0</level>
-                    <data>RunScript(plugin.video.4ka.tv,refresh)</data>
+                    <data>RunPlugin(plugin://plugin.video.4ka.tv/refresh)</data>
                     <control type="button" format="action">
                         <close>true</close>
                     </control>
@@ -313,7 +313,7 @@
 
                 <setting label="30053" type="boolean" id="iptv.enabled">
                     <level>0</level>
-                    <default>true</default>
+                    <default>false</default>
                     <dependencies>
                         <dependency type="visible" on="property" name="infobool">System.HasAddon(service.iptv.manager)</dependency>
                     </dependencies>
@@ -369,6 +369,19 @@
                 </setting>
             </group>
         </category>
+        <category id="another_setings" label="32006">
+            <group id="another_setings">
+                <setting label="30088" id="all_tags" type="boolean">
+                    <default>false</default>
+                    <level>0</level>
+                    <control type="toggle">
+                        <heading>30088</heading>
+                    </control>
+                </setting>
+            </group>
+        </category>
     </section>
+    
+        
 
 </settings>

@@ -246,12 +246,12 @@ msgid "Recording"
 msgstr "Nahrávanie"
 
 msgctxt "#30083"
-msgid "Recording %s started"
-msgstr "Nahrávanie %s začalo"
+msgid "Recording {} started"
+msgstr "Nahrávanie {} začalo"
 
 msgctxt "#30084"
-msgid "Recording %s finished"
-msgstr "Nahrávanie %s skončilo"
+msgid "Recording {} finished"
+msgstr "Nahrávanie {} skončilo"
 
 
 msgctxt "#30085"
@@ -265,6 +265,95 @@ msgstr "Zrušenie nahrávania"
 msgctxt "#30087"
 msgid "Really cancel record?"
 msgstr "Naozaj zrušiť nahrávanie?"
+
+
+msgctxt "#30088"
+msgid "Show all tags"
+msgstr "Zobraziť všetky tagy"
+
+msgctxt "#30089"
+msgid "File size"
+msgstr "Veľkosť súboru"
+
+msgctxt "#30090"
+msgid "All records"
+msgstr "Všetky nahrávky"
+
+msgctxt "#30091"
+msgid "Directories"
+msgstr "Priečinky"
+
+msgctxt "#30092"
+msgid "Maintenance"
+msgstr "Údržba"
+
+msgctxt "#30093"
+msgid "Utility"
+msgstr "Nástroje"
+
+msgctxt "#30094"
+msgid "Import another records"
+msgstr "Import iných nahrávok"
+
+msgctxt "#30095´"
+msgid "Remove download debug file(s)/Orphaned json file(s)"
+msgstr "Odstrániť debug súbory zo stahovania/Osamotené JSON súbory"
+
+msgctxt "#30096´"
+msgid "Remove selected file(s)"
+msgstr "Odstrániť súbor(y)"
+
+msgctxt "#30097´"
+msgid "Move/copy selected file(s) to library"
+msgstr "Presunúť/kopírovať súbor(y) do knižnice"
+
+msgctxt "#30098´"
+msgid "Import selected file(s)"
+msgstr "Importovať súbor(y)"
+
+msgctxt "#30099´"
+msgid "Select destination parent directory"
+msgstr "Vyberte cieľový rodičovský adresár"
+
+msgctxt "#30100´"
+msgid "Select file(s)"
+msgstr "Vyberte súbor(y)"
+
+msgctxt "#30101´"
+msgid "Override file(s)"
+msgstr "Prepísať súbor(y)"
+
+msgctxt "#30102´"
+msgid "Import record {} of {}"
+msgstr "Importuje sa {} nahrávka z {}"
+
+msgctxt "#30103´"
+msgid "Change destination parent directory""
+msgstr "Zmeniť cieľový rodičovský adresár"
+
+msgctxt "#30104´"
+msgid "Change for all"
+msgstr "Zmeniť pre všetky"
+
+msgctxt "#30105´"
+msgid "Delete source file(s)"
+msgstr "Zmazať zdrojové súbor(y)"
+
+msgctxt "#30106´"
+msgid "Choose a source recorder"
+msgstr "Vyberte zdrojový addon nahrávok"
+
+msgctxt "#30107´"
+msgid "Records are importing"
+msgstr "Importujú sa nahrávky"
+
+msgctxt "#30108´"
+msgid "Export to library"
+msgstr "Exportovať do kniznice"
+
+msgctxt "#30109´"
+msgid "Browse EPG"
+msgstr "Prehladávať EPG"
 
 msgctxt "#32001"
 msgid "Main"
@@ -286,61 +375,6 @@ msgctxt "#32005"
 msgid "Recording"
 msgstr "Nahrávanie"
 
-#~ msgctxt "#30035"
-#~ msgid "generate_playlist"
-#~ msgstr "Generovať playlist"
-
-#~ msgctxt "#30036"
-#~ msgid "playlistpath"
-#~ msgstr "Adresár súboru playlistu"
-
-#~ msgctxt "#30038"
-#~ msgid "generate_epg"
-#~ msgstr "Generovať EPG xml súbor"
-
-#~ msgctxt "#30039"
-#~ msgid "epgdays.past"
-#~ msgstr "Minulé dni pre generovanie EPG xml súboru"
-
-#~ msgctxt "#30041"
-#~ msgid "epgpath"
-#~ msgstr "Adresár súboru EPG súboru"
-
-#~ msgctxt "#30042"
-#~ msgid "epgfile"
-#~ msgstr "Názov súboru EPG"
-
-#~ msgctxt "#30043"
-#~ msgid "lang"
-#~ msgstr "Jazyk pre EPG a playlist"
-
-#~ msgctxt "#30052"
-#~ msgid "IPTVMinstall"
-#~ msgstr "Inštalácia IPTV manažéra"
-
-#~ msgctxt "#30053"
-#~ msgid "IPTVMenable"
-#~ msgstr "Povolnie integrácie IPTV manažéra"
-
-#~ msgctxt "#30055"
-#~ msgid "IPTVSimplerestart"
-#~ msgstr "Reštartovanie IPTV Simple po aktualizácií kanálov a EPG"
-
-#~ msgctxt "#30061"
-#~ msgid "live_tv"
-#~ msgstr "Živé vysielanie TV"
-
-#~ msgctxt "#30062"
-#~ msgid "live_radio"
-#~ msgstr "Živé vysielanie rádiá"
-
-#~ msgctxt "#30065"
-#~ msgid "usr_pwd_empty"
-#~ msgstr ""
-#~ "Treba nastaviť meno a heslo pre 4KA TV v nastaveniach pluginu. Taktiež je "
-#~ "možné nastaviť už existujúci token zariadenia. Ak sa nenastaví, plugin sa "
-#~ "pokúsi spárovať so službou 4KA TV"
-
-#~ msgctxt "#30066"
-#~ msgid "tokenempty"
-#~ msgstr "Device token nie je nastavený"
+msgctxt "#32006"
+msgid "Another settings"
+msgstr "Ďalšie nastavenia"

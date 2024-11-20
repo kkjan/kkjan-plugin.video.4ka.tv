@@ -15,45 +15,46 @@ class IPTVManager:
     def __init__(self, port):
         """Initialize IPTV Manager object"""
         self.port = port
-        self._addon = xbmcaddon.Addon()
-        self.username = self._addon.getSetting("username")
-        self.password = self._addon.getSetting("password")
-        self.device_token = self._addon.getSetting("device_token")
-        self.device_type_code = self._addon.getSetting("device_type_code")
-        self.device_model = self._addon.getSetting("device_model")
-        self.device_name = self._addon.getSetting("device_name")
-        self.device_serial_number = self._addon.getSetting("device_serial_number")
-        self.datapath = xbmcvfs.translatePath(self._addon.getAddonInfo('profile')) 
-        self.epg_lang = self._addon.getSetting("epg_lang")
-        iptvsimpleaddon = xbmcaddon.Addon('pvr.iptvsimple')
-        iptvsimpleaddon.getSetting('musiclibrary.artistsfolder')
-
-        #get Kodi GUI settings for epg days past/future
-        json_query = xbmc.executeJSONRPC('{"jsonrpc":"2.0", "method":"Settings.GetSettingValue", "params":{"setting":"epg.pastdaystodisplay"}, "id":1}')
-        json_query = json.loads(json_query)
-        if 'result' in json_query and 'value' in json_query['result']:
-            self.epgdayspast = 24*json_query['result']['value']
-        else:
-            self.epgdayspast  = 24
-
-        json_query = xbmc.executeJSONRPC('{"jsonrpc":"2.0", "method":"Settings.GetSettingValue", "params":{"setting":"epg.futuredaystodisplay"}, "id":1}')
-        json_query = json.loads(json_query)
-        if 'result' in json_query and 'value' in json_query['result']:
-            self.epgdaysfuture  = 24*json_query['result']['value']
-        else:
-            self.epgdaysfuture  = 24
+        logger.logDbg("IPTVManager interface init")
 
     def via_socket(func):
         """Send the output of the wrapped function to socket"""
 
         def send(self):
-            """Decorator to send over a socket"""
-            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.connect(('127.0.0.1', self.port))  
-            self._4katv=C_4KATV.C_4KATV(self.username, self.password,self.device_token,self.device_type_code,self.device_model,self.device_name,self.device_serial_number,self.datapath,self.epg_lang)          
+            """Decorator to send over a socket"""          
             try:
+                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                sock.connect(('127.0.0.1', self.port))  
+                self._addon = xbmcaddon.Addon()
+                self.username = self._addon.getSetting("username")
+                self.password = self._addon.getSetting("password")
+                self.device_token = self._addon.getSetting("device_token")
+                self.device_type_code = self._addon.getSetting("device_type_code")
+                self.device_model = self._addon.getSetting("device_model")
+                self.device_name = self._addon.getSetting("device_name")
+                self.device_serial_number = self._addon.getSetting("device_serial_number")
+                self.datapath = xbmcvfs.translatePath(self._addon.getAddonInfo('profile')) 
+                self.epg_lang = self._addon.getSetting("epg_lang")
+                #get Kodi GUI settings for epg days past/future
+                json_query = xbmc.executeJSONRPC('{"jsonrpc":"2.0", "method":"Settings.GetSettingValue", "params":{"setting":"epg.pastdaystodisplay"}, "id":1}')
+                json_query = json.loads(json_query)
+                if 'result' in json_query and 'value' in json_query['result']:
+                    self.epgdayspast = 24*json_query['result']['value']
+                else:
+                    self.epgdayspast  = 24
+                json_query = xbmc.executeJSONRPC('{"jsonrpc":"2.0", "method":"Settings.GetSettingValue", "params":{"setting":"epg.futuredaystodisplay"}, "id":1}')
+                json_query = json.loads(json_query)
+                if 'result' in json_query and 'value' in json_query['result']:
+                    self.epgdaysfuture  = 24*json_query['result']['value']
+                else:
+                    self.epgdaysfuture  = 24  
+                self._4katv=C_4KATV.C_4KATV(self.username, self.password,self.device_token,self.device_type_code,self.device_model,self.device_name,self.device_serial_number,self.datapath,self.epg_lang)
                 sock.sendall(json.dumps(func(self)).encode())
+
+            except socket.error as e:
+                logger.logDbg("Connection error to 127.0.0.1:{}: {}".format(self.port, e))
             finally:
+                logger.logDbg("Socket close port :{}".format(self.port))
                 sock.close()
 
         return send
